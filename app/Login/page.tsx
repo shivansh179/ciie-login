@@ -17,20 +17,16 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const router = useRouter();
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
 
-      toast('Successfully Logged In', {
-        hideProgressBar: true,
-        autoClose: 2000,
-        type: 'success'
-      });
+      toast.success("Successfully Logged In");
 
       setTimeout(() => {
         router.push('/Dashboard'); // Redirect to a dashboard or home page after login
-      }, 2000);
+      }, 3000);
 
     } catch (error) {
       toast.error("Invalid Credentials");

@@ -22,7 +22,7 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const router = useRouter();
 
-  const handleRegister = async (e) => {
+  const handleRegister = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     if (password !== confirmPassword) {
         toast.error("Invalid Credentials")
@@ -48,6 +48,7 @@ export default function Register() {
             
      },3000);
     } catch (error) {
+      toast.error(`${error}`)
       console.error('Error registering:', error);
     }
   };
